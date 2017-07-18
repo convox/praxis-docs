@@ -1,5 +1,6 @@
 +++
 title = "Convox 2.0 Documentation"
+pre ="<i class='fa fa-github'></i> "
 +++
 
 Welcome to Convox. Convox is an application platform that unifies development, testing and deployment. 
@@ -70,6 +71,6 @@ Try the Convox workflow in minutes. Configure your first app, start a developmen
     - 🚀 nzoschke deployed to staging/example-staging
     - 🚀 nzoschke started a deploy to production/example-production
 
+## Dev / Prod Parity
 
-## Getting Started
-
+Convox offers true parity between the development and production environments. The configuration file and commands used to manage an app in development work to manage an app in production.

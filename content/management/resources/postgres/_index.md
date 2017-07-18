@@ -1,6 +1,6 @@
 +++
 title = "PostgreSQL"
-alwaysopen = true
+weight = 1
 +++
 
 PostgreSQL is a SQL database server. To add Postgres to an app, define a resource and add it to one or more services in `convox.yml`:
