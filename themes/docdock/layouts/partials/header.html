@@ -32,7 +32,7 @@
 
     {{ partial "custom-head.html" . }}
   </head>
-  <body class="" data-url="{{ .RelPermalink }}">
+  <body class="{{ .Params.class }}" data-url="{{ .RelPermalink }}">
     {{ partial "menu.html" . }}
         <section id="body">
         <div id="overlay"></div>
