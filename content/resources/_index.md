@@ -1,6 +1,6 @@
 +++
 title = "Resources"
-weight = 5
+weight = 6
 +++
 
 Resources are external services. The connection info is in a `RESOURCE_URL` environment variable that a client connects to. The most common resources are databases -- stateful services that you app will write and read data from.

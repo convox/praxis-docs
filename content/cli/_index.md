@@ -1,4 +1,4 @@
 +++
 title = "CLI Reference"
-weight = 6
+weight = 8
 +++
