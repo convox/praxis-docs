@@ -24,9 +24,13 @@ ol.tabs > li.inactive {
     border-bottom:1px solid #444;
 }
 
-ol.tab-contents > li,
-ol.tab-contents > li.active p:first-child {
+ol.tab-contents > li {
     display: none;
+}
+
+ol.tab-contents > li.active p:first-child {
+    text-align: center;
+    font-style: italic;
 }
 
 ol.tab-contents > li.active {

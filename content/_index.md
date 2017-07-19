@@ -18,7 +18,7 @@ Convox helps you build and deploy an app in minutes. It all starts with a `convo
 {{% /tabs %}}
 
 {{% tab-contents %}}
-1. Configure
+1. A `convox.yml` file describes an app, SSL configuration, scale and test commands
 
     ```yaml
     services:
@@ -29,7 +29,7 @@ Convox helps you build and deploy an app in minutes. It all starts with a `convo
         test: make test
     ```
 
-2. Develop
+2. A `cx start` command launches an app on your laptop with a static SSL hostname
 
     ```bash
     $ cx start
@@ -53,7 +53,7 @@ Convox helps you build and deploy an app in minutes. It all starts with a `convo
     $ open https://web.myapp.convox
     ```
 
-3. Test
+3. A `cx test` command runs an app test suite
 
     ```bash
     $ cx test
@@ -71,7 +71,7 @@ Convox helps you build and deploy an app in minutes. It all starts with a `convo
     0
     ```
 
-4. Deploy
+4. A `cx deploy` commands launches an app in the cloud with a static SSL hostname
 
     ```bash
     $ cx switch myorg/production
@@ -92,7 +92,7 @@ Convox helps you build and deploy an app in minutes. It all starts with a `convo
     web   https://myapp-web.balancer-2137821817.us-east-1.rack.convox.io/
     ```
 
-5. Automate
+5. Workflows define and run continuous integration and continuous delivery for an app
 
     ```yaml
     workflows:
