@@ -1,6 +1,6 @@
 +++
 title = "Convox 2.0 Documentation"
-pre ="<i class='fa fa-github'></i> "
+class = "home"
 +++
 
 Welcome to Convox. Convox is an application platform that unifies development, testing and deployment. 
@@ -9,6 +9,15 @@ Welcome to Convox. Convox is an application platform that unifies development, t
 
 Try the Convox workflow in minutes. Configure your first app, start a development environment, run the test suite, then run a continuous integration and deployment workflow.
 
+{{% tabs %}}
+1. Configure
+2. Develop
+3. Test
+4. Continuous Integration
+5. Continuous Deployment
+{{% /tabs %}}
+
+{{% tab-contents %}}
 1. Configure
 
     ```yaml
@@ -20,19 +29,19 @@ Try the Convox workflow in minutes. Configure your first app, start a developmen
         test: make test
     ```
 
-2. Develop locally
+2. Develop
 
     ```bash
     $ convox start
     ```
 
-3. Test locally
+3. Test
 
     ```bash
     $ convox test
     ```
 
-4. Configure continuous integration
+4. Continuous Integration
 
     ```yaml
     workflows:
@@ -52,7 +61,7 @@ Try the Convox workflow in minutes. Configure your first app, start a developmen
     - ❌ convox/change — tests failed
     - ✅ convox/change — tests passed
 
-5. Configure continuous deployment
+5. Continuous Deployment
 
     ```yaml
     workflows:
@@ -70,6 +79,7 @@ Try the Convox workflow in minutes. Configure your first app, start a developmen
     - ✅ convox/merge — tests passed
     - 🚀 nzoschke deployed to staging/example-staging
     - 🚀 nzoschke started a deploy to production/example-production
+{{% /tab-contents %}}
 
 ## Dev / Prod Parity
 

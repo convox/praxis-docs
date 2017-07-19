@@ -1,0 +1,31 @@
+ol.tabs {
+    text-align: center;
+    counter-reset: item;
+    list-style-type: decimal;
+}
+
+ol.tabs li:before {
+    /* content: counter(item, decimal) '. '; */
+    counter-increment: item;
+}
+
+ol.tabs > li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+ol.tabs > li.inactive {
+    cursor: pointer;
+    border-bottom:1px solid #444;
+}
+
+ol.tab-contents > li,
+ol.tab-contents > li.active p:first-child {
+    display: none;
+}
+
+ol.tab-contents > li.active {
+    display: inline-block;
+    min-height: 500px;
+    width: 100%;
+}
