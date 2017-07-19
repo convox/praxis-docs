@@ -3,13 +3,10 @@ title = "Cloud Deployment"
 weight = 2
 +++
 
-Convox Praxis is a universal infrastructure framework. When you develop and deploy applications using the Praxis CLI, API and SDK you completely abstract away concerns about where your application is running. In minutes you can set up a system that has perfect development / production parity and deploy your app to the cloud.
 
-The [Getting Started for Local Development](getting-started-local.md) guide walked you through installing the Praxis CLI and setting up a Docker-based development environment for an app.
+Convox is a universal application framework. When you deploy applications using the Convox CLI, API and SDK you completely abstract away concerns about where your application is running. In minutes you can set up a production environment that uses configures reliable cloud services to run your app.
 
 This guide will walk you through creating a Convox account and setting up an AWS-based production environment for an app.
-
-Together you'll see how Praxis offers an app workflow -- build, config, diff, test and promote -- that works exactly the same in development and production. The result is a simple, fast and portable dev, test and deploy workflow.
 
 ## Setting up your organization
 
@@ -185,4 +182,4 @@ Becaus Praxis offers dev/prod parity, you can run tests in your AWS account with
 
 This isn't as fast as running tests in a Local Rack, but it offers a shared test environment for your organization.
 
-Congratulations! You've just set up a powerful development workflow and tested and deployed your application to robust cloud infrastructure!
+Congratulations! You've just tested and deployed your application on robust cloud infrastructure.

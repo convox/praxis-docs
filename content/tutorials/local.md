@@ -3,19 +3,15 @@ title = "Local Development"
 weight = 1
 +++
 
-Convox Praxis is a universal infrastructure framework. When you develop and deploy applications using the Praxis CLI, API and SDK you completely abstract away concerns about where your application is running. In minutes you can set up a system that has perfect development / production parity and deploy your app to the cloud.
+Convox is a universal application framework. When you develop applications using the Convox CLI, API and SDK you completely abstract away concerns about where your application is running. In minutes you can set up a development environment that perfectly mimics how your app will run in production.
 
-This guide will walk you through installing the Praxis CLI and setting up a Docker-based development environment for an app.
-
-The [Getting Started for Production Deploys](getting-started-aws.md) will walk you through creating a Convox account and setting up a an AWS-based production environment for an app.
-
-Together you'll see how Praxis offers an app workflow -- build, config, diff, test and promote -- that works exactly the same in development and production. The result is a simple, fast and portable dev, test and deploy workflow.
+This guide will walk you through installing the Convox CLI and setting up a Docker-based development environment for an app.
 
 ## Setting up your development environment
 
 ### Install the CLI
 
-First, install the Praxis `cx` command line client.
+First, install the Convox `cx` command line client.
 
 #### MacOS
 
@@ -34,7 +30,7 @@ Confirm that cx is correctly installed and up to date:
 
 ### Install the development environment
 
-Your applications will run in an isolated environment called a *Rack*. While your *production Rack* will run on a cloud infrastructure provider like AWS, you can also install a *local Rack* on your development computer. This makes it easy to achieve dev/prod parity.
+Your applications will run in an isolated environment called a *Rack*. While your *production Rack* will run on a cloud infrastructure provider like AWS, you can install a *local Rack* on your development computer. This makes it easy to achieve dev/prod parity.
 
 To install a local Rack you'll first need to install Docker. The free Docker Community Edition can be found for your OS [here](https://www.docker.com/community-edition).
 
@@ -44,13 +40,15 @@ Once you have Docker up and running you can use `cx` to install a local Rack:
     installing: /Library/LaunchDaemons/convox.rack.plist
     installing: /Library/LaunchDaemons/convox.router.plist
 
-This starts the Praxis API on your computer, which the `cx` tool will use to manage apps.
+This starts the Convox API on your computer, which the `cx` tool interacts with to manage apps.
 
-This also starts the Praxis Router on your computer, which manages load balancing, DNS, and SSL certificates for your development apps. You can load the Praxis Certificate Authority (CA) public key into your keychain so all development SSL traffic is trusted:
+This also starts a "router" on your computer, which manages load balancing, DNS, and SSL certificates for your development apps. You can load the Convox Certificate Authority (CA) public key into your keychain so all development SSL traffic is trusted:
 
     $ open /Users/Shared/convox/ca.crt
 
 In the "Add Certificates" dialog, select the "System" keychain, and click "Add". Then in the "Keychain Access" app, search for "convox" and double click on "ca.convox". In the root certificate dialog, change "When using this certificate:" to "Always Trust" and close the dialog.
+
+![OS X Keychain Access](/images/keychain.png "OS X Keychain Access")
 
 ## Developing your first app
 
@@ -310,18 +308,4 @@ in the Dockerfile, so the entire project directory is synced.
 
 The local Rack is great for development, but eventually you'll also want to set up a production Rack on the internet where you can deploy your apps and make them accessible to others.
 
-Because Praxis offers dev/prod parity, you can install a production environment in your AWS account with:
-
-    $ cx rack install aws
-
-After a few minutes of setup, you can use the same exact CLI workflow to deploy your first app to AWS:
-
-    $ cx apps create praxis-site
-    $ cx deploy
-    $ cx services
-    NAME  ENDPOINT
-    web   https://praxis-site-web.prod-balan-yqveh744gpex-2137821817.us-east-1.rack.convox.io/
-
-However, the Convox Graphical User Interface (GUI) makes it even easier manage your production Racks and Apps and share them with your development team.
-
-Check out the [Getting Started for Production Deploys](getting-started-aws.md) guide to walk through creating a Convox account and setting up a an AWS-based production environment for an app.
+Check out the [Cloud Deployment](/quick_start/cloud) quick start to walk through creating a Convox account and setting up a an AWS-based production environment for an app.
