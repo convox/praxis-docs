@@ -2,6 +2,7 @@ ol.tabs {
     text-align: center;
     counter-reset: item;
     list-style-type: decimal;
+    padding-left: 0;
 }
 
 ol.tabs li:before {
@@ -12,6 +13,10 @@ ol.tabs li:before {
 ol.tabs > li {
     display: inline-block;
     margin: 0 10px;
+}
+
+ol.tab-contents {
+    padding-left: 0;
 }
 
 ol.tabs > li.inactive {
@@ -26,6 +31,5 @@ ol.tab-contents > li.active p:first-child {
 
 ol.tab-contents > li.active {
     display: inline-block;
-    min-height: 500px;
     width: 100%;
 }
