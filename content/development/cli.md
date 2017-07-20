@@ -3,7 +3,7 @@ title = "Installing the CLI"
 weight = 1
 +++
 
-The `cx` Command Line Interface (CLI) is a universal tool to manage apps on your computer and in the cloud.
+The `cx` Command Line Interface (CLI) is a tool to manage apps on your computer and in the cloud.
 
 ## Install the CLI
 

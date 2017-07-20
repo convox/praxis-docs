@@ -1,4 +1,4 @@
 +++
-title = "Running Tests"
-weight = 6
+title = "Running tests"
+weight = 5
 +++

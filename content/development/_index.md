@@ -26,7 +26,7 @@ All of this is designed to provide strong guarantees around your code base. When
 
 ## Next
 
-These following docs, starting with [Installing the CLI](/development/cli/), walk through setting up the development environment for your apps.
+To get started we will [install the CLI](/development/cli/). Then we will walk through steps that configure our app for the platform.
 
 ## Further reading:
 
