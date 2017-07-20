@@ -1,0 +1,5 @@
+services:
+  web:
+    command: hugo server --theme docdock
+    image: convox/hugo
+    port: 1313
