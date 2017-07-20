@@ -122,6 +122,7 @@ It also declares the app operating system by referencing a Docker Image or a Doc
 It might take some work to write the config files for an existing app. The good news is the `cx build`, `cx start`, and `cx test` commands will help verify your progress. 
 
 1. Define your service types, e.g. `web`, `worker`
+2. Specify service Docker images or Dockerfiles
 2. Define service commands like how to start the server and how to run tests
 3. Define service environment, e.g. `GITHUB_API_TOKEN`. This is a whitelist, anything not defined here will not be available to your service.
 4. Define HTTP/HTTPS service properties like the web server port, and health checks
