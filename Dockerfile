@@ -2,6 +2,7 @@ FROM convox/hugo
 
 COPY . .
 
+CMD ["hugo", "server", "--bind", "0.0.0.0", "--theme", "docdock", "-w"]
+
 ## convox:production
-RUN hugo --theme docdock
-CMD ["hugo", "server", "--bind", "0.0.0.0"]
+CMD ["hugo", "server", "--bind", "0.0.0.0", "--theme", "docdock"]
