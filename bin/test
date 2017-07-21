@@ -1,3 +1,23 @@
 #!/bin/bash
+function report() {
+  c=$?
+
+  if [ $c -eq 0 ]; then
+    echo "✅  $@"
+  else
+    echo "❌  $@"
+    exit $c
+  fi
+}
 
 hugo --theme docdock
+report build returns 0
+
+curl -ks https://web.$APP.convox/index.htm | grep "404 page not found"
+report bad path returns 404 response
+
+curl -ks --write-out %{http_code} https://web.$APP.convox/index.html | grep 301
+report index.html returns redirect response
+
+curl -ks https://web.$APP.convox/ | grep "Convox 2.0 Documentation"
+report / returns expected content
