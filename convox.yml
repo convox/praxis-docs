@@ -3,3 +3,12 @@ services:
     command: hugo server --bind 0.0.0.0 --theme docdock -w
     test: bin/test
     port: 1313
+workflows:
+  change:
+    create:
+      - test: staging
+    update:
+      - test: staging
+  merge:
+    master:
+      - deploy: staging/docs-staging
