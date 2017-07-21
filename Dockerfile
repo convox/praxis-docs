@@ -1,0 +1,3 @@
+FROM convox/hugo
+
+COPY . .
