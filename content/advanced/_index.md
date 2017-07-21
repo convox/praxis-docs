@@ -1,5 +1,4 @@
 +++
 title = "Advanced Topics"
-alwaysopen = true
-weight = 9
+weight = 4
 +++

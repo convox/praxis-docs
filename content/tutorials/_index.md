@@ -37,7 +37,7 @@ $ cx promote
 
 ---
 
-These tutorials are for a developer just getting started with Convox, and walk through the Convox workflow on a sample application.
+These tutorials are for a developer just getting started with Convox. They walk through the Convox workflow on a sample application.
 
 The first guide works with the app on your development machine that is running Docker. Some developers may stop here and just use Convox to manage apps in development.
 
