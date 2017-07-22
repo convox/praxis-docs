@@ -21,3 +21,6 @@ report index.html returns redirect response
 
 curl -ks https://web.$APP.convox/ | grep "Convox 2.0 Documentation"
 report / returns expected content
+
+curl -ks https://web.$APP.convox/index.json | grep "Local Development"
+report /index.json returns expected content

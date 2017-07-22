@@ -1,7 +1,8 @@
 services:
   web:
-    test: bin/test
     port: 1313
+    scale: 2
+    test: bin/test
 
 workflows:
   change:
