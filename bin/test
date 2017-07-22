@@ -10,7 +10,7 @@ function report() {
   fi
 }
 
-hugo --theme docdock
+hugo --baseURL=${HOST}
 report build returned 0
 
 curl -ks https://web.$APP.convox/index.htm | grep "404 page not found"
@@ -22,7 +22,7 @@ report index.html returned redirect response
 curl -ks https://web.$APP.convox/ | grep "Convox 2.0 Documentation"
 report / returned expected content
 
-curl -ks https://web.$APP.convox | grep baseurl | grep "\/$HOST\/"
+curl -ks https://web.$APP.convox | grep baseurl | grep "/$HOST\\\\"
 report / included expected config
 
 curl -ks https://web.$APP.convox/index.json | grep "Local Development"

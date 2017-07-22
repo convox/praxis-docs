@@ -1,4 +1,3 @@
-baseURL = "https://web.docs.convox/"
 languageCode = "en-us"
 title = "Convox 2.0 Documentation"
 theme = "docdock"

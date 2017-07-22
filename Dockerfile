@@ -12,4 +12,4 @@ COPY . .
 CMD hugo server --appendPort=false --baseURL=${HOST} --bind=0.0.0.0 -w
 
 ## convox:production
-CMD hugo server --baseURL=${HOST} --bind=0.0.0.0
+CMD hugo server --appendPort=false --baseURL=${HOST} --bind=0.0.0.0
