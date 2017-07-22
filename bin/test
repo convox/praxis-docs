@@ -11,16 +11,19 @@ function report() {
 }
 
 hugo --theme docdock
-report build returns 0
+report build returned 0
 
 curl -ks https://web.$APP.convox/index.htm | grep "404 page not found"
-report bad path returns 404 response
+report bad path returned 404 response
 
 curl -ks --write-out %{http_code} https://web.$APP.convox/index.html | grep 301
-report index.html returns redirect response
+report index.html returned redirect response
 
 curl -ks https://web.$APP.convox/ | grep "Convox 2.0 Documentation"
-report / returns expected content
+report / returned expected content
+
+curl -ks https://web.$APP.convox | grep baseurl | grep "\/$HOST\/"
+report / included expected config
 
 curl -ks https://web.$APP.convox/index.json | grep "Local Development"
-report /index.json returns expected content
+report /index.json returned expected content

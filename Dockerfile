@@ -9,7 +9,7 @@ WORKDIR /app
 
 COPY . .
 
-CMD ["hugo", "server", "--appendPort=false", "--baseURL=web.docs.convox", "--bind=0.0.0.0", "-w"]
+CMD hugo server --appendPort=false --baseURL=${HOST} --bind=0.0.0.0 -w
 
 ## convox:production
-CMD ["hugo", "server", "--bind", "0.0.0.0"]
+CMD hugo server --baseURL=${HOST} --bind=0.0.0.0

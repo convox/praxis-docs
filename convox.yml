@@ -1,5 +1,8 @@
 services:
   web:
+    certificate: ${HOST}
+    environment:
+      - HOST=web.docs.convox
     port: 1313
     scale: 2
     test: bin/test
