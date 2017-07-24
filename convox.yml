@@ -1,6 +1,20 @@
 services:
   web:
-    command: hugo server --theme docdock
-    build: .
-    test: bin/test
+    certificate: ${HOST}
+    environment:
+      - HOST=web.docs.convox
     port: 1313
+    scale: 2
+    test: bin/test
+
+workflows:
+  change:
+    create:
+      - test: staging
+    update:
+      - test: staging
+  merge:
+    master:
+      - test: staging
+      - deploy: staging/docs-staging
+      - copy: production/docs-production

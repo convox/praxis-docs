@@ -1,3 +1,6 @@
-baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "Convox 2.0 Documentation"
+theme = "docdock"
+
+[outputs]
+home = ["HTML", "JSON"]
