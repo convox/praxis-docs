@@ -3,4 +3,4 @@ title = "Convox 2.0 Documentation"
 theme = "docdock"
 
 [outputs]
-home = [ "HTML", "JSON"]
+home = ["HTML", "JSON"]
