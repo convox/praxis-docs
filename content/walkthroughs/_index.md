@@ -1,5 +1,5 @@
 +++
-title = "Tutorials"
+title = "Walkthroughs"
 alwaysopen = true
 weight = 1
 +++
@@ -37,10 +37,10 @@ $ cx promote
 
 ---
 
-These tutorials are for a developer just getting started with Convox. They walk through the Convox workflow on a sample application.
+These walkthroughs are for a developer just getting started with Convox. They demonstrate the Convox workflow on a sample application.
 
 The first guide works with the app on your development machine that is running Docker. Some developers may stop here and just use Convox to manage apps in development.
 
 The second guide works with the app in the Amazon Web Services (AWS) cloud. Some developers may appreciate the "dev/prod" parity of the platform and how Convox eliminates the complexities of AWS.
 
-Let's get started with the [local development tutorial](/tutorials/local).
+Let's get started with the [local development walkthrough](/walkthroughs/local).
