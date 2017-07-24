@@ -3,11 +3,13 @@ title = "Convox 2.0 Documentation"
 class = "home"
 +++
 
-Welcome to Convox, an application platform that unifies development, testing and deployment.
+## Welcome
 
-## How It Works
+Welcome to Convox, an application platform that offers perfect parity between development, testing and production environments.
 
-Convox helps you build and deploy an app in minutes. It all starts with a `convox.yml`, a simple configuration file that describes everything about your app. This file is your blueprint for starting a development environment, running a test suite, and deploying to a reliable, scalable and cost-effective cloud architecture.
+Convox helps you build and deploy apps in minutes. It all starts with a `convox.yml`, a simple configuration file that describes everything about your app. This file is your blueprint for starting a development environment, running a test suite, and deploying to a reliable, scalable and cost-effective cloud architecture.
+
+With Convox, when it works on your laptop you can be certain it will work in production. No code or config changes required.
 
 {{% tabs %}}
 1. Configure
@@ -18,60 +20,76 @@ Convox helps you build and deploy an app in minutes. It all starts with a `convo
 {{% /tabs %}}
 
 {{% tab-contents %}}
-1. A `convox.yml` file describes an app, SSL configuration, scale and test commands
+1. The `convox.yml` file describes an app, SSL configuration, scale and test commands. The `Dockerfile` describes app dependencies and server commands. 
 
     ```yaml
     services:
       web:
         certificate: ${HOST}
+        environment:
+          - HOST=web.docs.convox
         port: 1313
         scale: 2
-        test: make test
+        test: bin/test
     ```
 
-2. A `cx start` command launches an app on your laptop with a static SSL hostname
+    ```Dockerfile
+    FROM golang:1.8.3
+
+    RUN apt-get update && apt-get install -y curl python-pip
+    RUN pip install pygments
+
+    RUN go get -v github.com/gohugoio/hugo
+
+    COPY . .
+
+    CMD hugo server --baseURL=${HOST} -w
+    ```
+
+2. The `cx start` command launches an app on your laptop behind a static SSL hostname.
 
     ```bash
     $ cx start
-    build   | building: myapp
-    build   | running: docker build -t 9836064b .
-    build   | Step 1/2 : FROM debian/jessie:8
-    build   | Step 2/2 : COPY . /app
-    build   | Successfully built beafc72ce9f3
-    build   | running: docker tag 9836064b convox/myapp/web:BNSEGLZHZM
+    build   | building: docs
+    build   | Step 1/6 : FROM golang:1.8.3
+    build   | Step 2/6 : RUN apt-get update && apt-get install -y curl python-pip
+    build   | Step 3/6 : RUN pip install pygments
+    build   | Step 4/6 : RUN go get -v github.com/gohugoio/hugo
+    build   | Step 5/6 : WORKDIR /app
+    build   | Step 6/6 : COPY . .
+    build   | running: docker tag 9836064b convox/docs/web:BFGEZTOEXR
     build   | build complete
-    convox  | promoting RZUGPIDSHG
-    convox  | starting: convox.myapp.service.web.1
-    convox  | starting: convox.myapp.service.web.2
+    convox  | promoting RIJBGELKDA
+    convox  | starting: convox.docs.service.web.1
+    convox  | starting: convox.docs.service.web.2
     web     | syncing: . to /app
     web     | Listening on port 1313
 
     $ cx services
     NAME  ENDPOINT
-    web   https://web.praxis-site.convox
-
-    $ open https://web.myapp.convox
+    web   https://web.docs.convox
     ```
 
-3. A `cx test` command runs an app test suite
+    ![Secure Static Hostname](/images/chrome-secure.png "Secure Static Hostname")
+
+
+3. The `cx test` command runs an app test suite on your laptop.
 
     ```bash
     $ cx test
-    build   | building: myapp
+    build   | building: docs
     convox  | promoting RZUGPIDSHG
     convox  | starting: convox.test-1498754013.service.web.1
     convox  | starting: convox.test-1498754013.service.web.2
-    web     | running: make test
-    web     | ok  	github.com/myorg/myapp/api	0.024s
-    web     | ok  	github.com/myorg/myapp/api/controllers	0.075s
-    web     | ok  	github.com/myorg/myapp/client	0.014s
-    web     | ok  	github.com/myorg/myapp/cmd/cli	0.040s
-
-    $ echo $?
-    0
+    web     | running: bin/test
+    web     | ✅  build returned 0
+    web     | ✅  /index.htm returned 404 response
+    web     | ✅  /index.html returned redirect response
+    web     | ✅  / returned expected content
+    web     | ✅  /index.json returned expected content
     ```
 
-4. A `cx deploy` commands launches an app in the cloud with a static SSL hostname
+4. The `cx deploy` command launches an app in the cloud with a static SSL hostname, just like development.
 
     ```bash
     $ cx switch myorg/production
@@ -92,7 +110,7 @@ Convox helps you build and deploy an app in minutes. It all starts with a `convo
     web   https://myapp-web.balancer-2137821817.us-east-1.rack.convox.io/
     ```
 
-5. Workflows define and run continuous integration and continuous delivery for an app
+5. Workflows define and run continuous integration and continuous delivery for an app.
 
     ```yaml
     workflows:
