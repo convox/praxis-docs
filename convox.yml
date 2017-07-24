@@ -15,4 +15,6 @@ workflows:
       - test: staging
   merge:
     master:
+      - test: staging
       - deploy: staging/docs-staging
+      - copy: production/docs-production
