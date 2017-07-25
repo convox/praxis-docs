@@ -4,24 +4,18 @@ alwaysopen = true
 weight = 2
 +++
 
-It was one of those weeks... The feature sounded really simple at planning, but rolling it out was a fiasco.
+Setting up a new laptop to work on apps should take minutes, not days.
 
+Designing a robust and secure AWS architecture shouldn't require years of experience.
 
-
-
-
-It didn't
-
-The last two weeks were frustrating. What seemed like it should be a simple new feature 
-
----
+Configuring a continuous integration or continuous delivery pipeline shouldn't require installing software and writing complex scripts.
 
 These guides are for a developer that is familar with the Convox platform. They document how to configure platform to work best for your apps and team.
 
-The first guide documents how to set up the Convox tools on a development computer and in the cloud.
+## Learn More
 
-The next guide documents how to prepare an application to work with the platform.
+If you're setting up a new laptop or AWS account, you can follow the [setup guide](/guides/setup/).
 
-The final guide documents how to set up a continuous integration and continuoud delivery workflow to help your entire team quickly and safely ship code.
+If you're migrating an app, check out the [app guide](/guides/app/) for tips on writing a convox.yml and Dockerfile.
 
-Let's get started with the [installation guide](/guides/install/).
+If you want a Continuous Integration or Continuous Delivery pipeline, take a look at the [workflows guide](/guides/workflows).
