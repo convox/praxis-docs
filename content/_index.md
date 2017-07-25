@@ -1,5 +1,5 @@
 +++
-title = "Convox 2.0 Documentation"
+title = "Welcome to Convox"
 class = "home"
 +++
 
@@ -30,6 +30,7 @@ With Convox, when an app works on your laptop, you can be confident it will also
         certificate: ${HOST}
         environment:
           - HOST=web.docs.convox
+          - HUGO_TITLE="Convox 2.0 Documentation"
         port: 1313
         scale: 2
         test: bin/test
