@@ -43,13 +43,15 @@ Once you have Docker up and running you can use `cx` to install a local Rack:
 
 This starts the Convox API on your computer, which the `cx` tool interacts with to manage apps.
 
-This also starts a "router" on your computer, which manages load balancing, DNS, and SSL certificates for your development apps. You can load the Convox Certificate Authority (CA) public key into your keychain so all development SSL traffic is trusted:
+This also starts a "load balancer" on your computer, which manages routing to containers, DNS, and SSL certificates for your development apps.
 
-    $ open /Users/Shared/convox/ca.crt
+You can load the Convox Certificate Authority (CA) public key into your keychain so all development SSL traffic is trusted:
 
-In the "Add Certificates" dialog, select the "System" keychain, and click "Add". Then in the "Keychain Access" app, search for "convox" and double click on "ca.convox". In the root certificate dialog, change "When using this certificate:" to "Always Trust" and close the dialog.
+    $ sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain /Users/Shared/convox/ca.crt
 
-![OS X Keychain Access](/images/keychain.png "OS X Keychain Access")
+You can verify or revoke this certificate by searching for "convox" in the OS X Keychain.
+
+![OS X Trusted Keychain Access](/images/keychain.png "OS X Trusted Keychain Access")
 
 ## Developing your first app
 
@@ -62,20 +64,45 @@ Clone the app and enter its directory:
     $ git clone https://github.com/convox/docs.git
     $ cd docs/
 
-#### convox.yml
+### Quick start
+
+Spoiler alert: Convox apps need very little documentation to start. You can run the following commands to launch the app on your computer:
+
+    $ cx apps create
+    creating docs: OK
+
+    $ cx start
+    build   | building: /Users/matthew/code/convox/docs
+    convox  | starting: convox.docs.service.web.1
+    convox  | starting: convox.docs.service.web.2
+    web     | Web Server is available at //web.docs.convox/ (bind address 0.0.0.0)
+    web     | Web Server is available at //web.docs.convox/ (bind address 0.0.0.0)
+
+    $ cx services
+    NAME  ENDPOINT
+    web   https://web.docs.convox
+
+The app is now available on your at `https://web.docs.convox`.
+
+![It works!](/images/chrome-secure.png "It works!")
+
+Press "Ctrl+C" to stop the app and read on to learn how it all works...
+
+### convox.yml
 
 The first thing to take note of in the project is the `convox.yml` file. This is where the app's description and configuration live.
 
-```yaml
-services:
-  web:
-    certificate: ${HOST}
-    environment:
-      - HOST=web.docs.convox
-    port: 1313
-    scale: 2
-    test: bin/test
-```
+    ```yaml
+    services:
+    web:
+        certificate: ${HOST}
+        environment:
+        - HOST=web.docs.convox
+        - HUGO_TITLE="Convox 2.0 Documentation"
+        port: 1313
+        scale: 2
+        test: bin/test
+    ```
 
 The `convox.yml` for this app is straightfoward. It defines a single service called `web`.
 
@@ -155,10 +182,10 @@ Notice that you see logs for the two processes requested in the convox.yml `scal
 
 Now that you have the app up and running, you can try the development cycle by making a change to the source code and deploying it to your local Rack.
 
-Open `content/_index.md` in the project and add the text "Hello, this is a change!" right below the Introduction header. After the edit your file should look like this:
+Open `content/_index.md` in the project and add the text "Hello, this is a change!" right below the Welcome header. After the edit your file should look like this:
 
     +++
-    title = "Convox 2.0 Documentation"
+    title = "Welcome to Convox"
     class = "home"
     +++
     
@@ -192,7 +219,7 @@ You can test an app using `cx test`. This command will create a temporary app, d
     web     | ✅  / returned expected content
     web     | ✅  /index.json returned expected content
 
-If you'd like to see the test fail, open `config.toml` and delete the `theme = "docdock"` line and run `cx test` again.
+If you'd like to see the test fail, open `config.toml` and remove "JSON" from the `home = ["HTML", "JSON"]` line and run `cx test` again. Remember to change it back to keep tests passing.
 
 With the `convox.yml` file and a `cx test` command you have achieved development / test environment parity.
 
@@ -200,7 +227,16 @@ With the `convox.yml` file and a `cx test` command you have achieved development
 
 While `cx deploy` is an easy way to deploy changes, the build, configure and promote steps are possible with the CLI so you can customize your workflow.
 
-First make another change. Open `content/_index.md` and replace the "Hello, this is a change!" text with "Hey, this is another change.".
+First make another change. Open `content/_index.md` and replace the "Hello, this is a change!" text with "Hey, this is another change.". After your edit the file will should look like:
+
+    +++
+    title = "Welcome to Convox"
+    class = "home"
+    +++
+    
+    # Welcome
+    
+    Hey, this is another change!
 
 Next, create a build but not deploy it:
 
@@ -221,8 +257,11 @@ Building without deploying is useful to stage changes and then deploy them as a 
 
 A new release is also created when you change the application's environment.
 
-    $ cx env set FOO=bar
+    $ cx env set HUGO_TITLE="Convox 2.1 Documentation"
     updating environment: OK
+
+    $ cx env
+    HUGO_TITLE=Convox 2.1 Documentation
 
 ### View releases
 
@@ -237,36 +276,49 @@ Every time you build your app or change an environment variable, a new "release"
 
 You can see from this list that the most recent release, `RGCMQGSYYN`, was created but not promoted which means its changes have not yet been deployed.
 
-Releases that aren't promoted are useful to run pre-deploy commands like database migrations or asset uploads.
-
-    $ cx run --release RGCMQGSYYN web hugo convert toJSON -o /tmp
-
 ### Diff releases
 
 Before you promote a release, you can use `cx diff` to summarize the changes about to be deployed:
 
     $ cx diff
-    fetching RWSHXASNDF: OK
+    fetching RGCMQGSYYN: OK
     fetching RTKJFWMKYG: OK
     diff --git 663957140/.env 924574153/.env
-    index e69de29..1566bb1 100644
     --- 663957140/.env
     +++ 924574153/.env
     @@ -0,0 +1 @@
-    +FOO=bar
+    +HUGO_TITLE=Convox 3.0 Documentation
 
-    diff --git 663957140/content/index.md 924574153/content/index.md
-    index 308583e..82f79db 100644
-    --- 663957140/content/index.md
-    +++ 924574153/content/index.md
+    diff --git 663957140/content/_index.md 924574153/content/_index.md
+    --- 663957140/content/_index.md
+    +++ 924574153/content/_index.md
     @@ -5,7 +5,7 @@ weight: 5
     
-    # Introduction
+    # Welcome
     
     -Hello, this is a change!
     +Hey, this is another change.
 
-Once you verify the diff you can promote it.
+### Run releases
+
+Releases that aren't promoted are useful to run pre-deploy commands like database migrations or asset uploads. You can start an interactive shell session to work with a pre-release with the `cx run` command and the `--release` argument. Note that your release IDs will be different than this walkthrough:
+
+    $ cx run --release RGCMQGSYYN web bash
+
+    root@9e2cec7b0ef5:/app# head content/_index.md
+    +++
+    title = "Welcome to Convox"
+    class = "home"
+    +++
+
+    ## Welcome
+
+    Hey, this is another change!
+
+    root@9e2cec7b0ef5:/app# env | grep HUGO_TITLE
+    HUGO_TITLE=Convox 3.0 Documentation
+
+Now that you have verified the diff and interacted with it you can promote it.
 
 ### Promote a release
 
