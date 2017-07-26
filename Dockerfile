@@ -1,7 +1,7 @@
 FROM golang:1.8.3
 
 RUN apt-get update && apt-get install -y curl python-pip
-RUN pip install pygments
+RUN pip install --pre pygments pygments-markdown-lexer
 
 RUN go get -v github.com/gohugoio/hugo
 
