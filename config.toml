@@ -1,4 +1,7 @@
 languageCode = "en-us"
+pygmentsCodeFences = true
+pygmentsCodeFencesGuessSyntax = true
+pygmentsUseClasses = true
 theme = "docdock"
 
 [outputs]

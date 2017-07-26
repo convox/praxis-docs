@@ -36,7 +36,7 @@ With Convox, when an app works on your laptop, you can be confident it will also
         test: bin/test
     ```
 
-    ```Dockerfile
+    ```Docker
     FROM golang:1.8.3
 
     RUN apt-get update && apt-get install -y curl python-pip
@@ -51,7 +51,7 @@ With Convox, when an app works on your laptop, you can be confident it will also
 
 2. The `cx start` command launches an app on your laptop, with a load balancer and SSL just like production.
 
-    ```bash
+    ```console
     $ cx start
     build   | building: docs
     build   | Step 1/6 : FROM golang:1.8.3
@@ -78,7 +78,7 @@ With Convox, when an app works on your laptop, you can be confident it will also
 
 3. The `cx test` command runs an app test suite on your laptop.
 
-    ```bash
+    ```console
     $ cx test
     build   | building: docs
     convox  | promoting RZUGPIDSHG
@@ -94,7 +94,7 @@ With Convox, when an app works on your laptop, you can be confident it will also
 
 4. The `cx deploy` command launches an app in the cloud, where the VPC, load balancer and container schedule are a solved problem.
 
-    ```bash
+    ```console
     $ cx switch myorg/production
 
     $ cx deploy
