@@ -1,6 +1,6 @@
 +++
 title = "Resources"
-alwaysopen = true
+alwaysopen = false
 weight = 2
 +++
 
