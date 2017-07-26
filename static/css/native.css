@@ -11,7 +11,7 @@ a.highlight { /* restore theme link style */
 } 
 
 .highlight .language-console,
-.highlight .language-console .nb { 
+.highlight .language-console .nb {
     color: #fff;
 }
 
