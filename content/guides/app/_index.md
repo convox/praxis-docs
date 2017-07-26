@@ -1,5 +1,5 @@
 +++
-title = "Preparing an app"
+title = "Preparing an App"
 weight = 2
 +++
 
