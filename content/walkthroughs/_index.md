@@ -16,6 +16,11 @@ Convox turns your laptop into a powerful app development platform. The `cx` comm
 
 On your laptop a single `cx start` command starts an interactive development environment. A single `cx test` command runs the entire test suite.
 
+```console
+$ cx start
+$ cx test
+```
+
 When working on microservices you can `cx deploy` the "api" app to run it in the background on your laptop, then `cx start` the "dashboard" app in the foreground to work on it. 
 
 Every service is available through static, SSL-enabled hostnames like `https://web.api.convox` and `https://static.dashboard.convox`. Every database is available with connection strings like `postgres://database.resource.api.convox:5432` and a `DATABASE_URL` environment variable is automatically set in every process. 
@@ -28,7 +33,7 @@ Run the `cx switch` command to point the CLI to a cloud sandbox, staging or prod
 
 Your first staging deploy is a simple procedure that you've already tested on your laptop:
 
-```
+```console
 $ cx switch myorg/staging
 $ cx build
 $ cx run rake db:migrate
