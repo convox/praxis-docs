@@ -113,7 +113,7 @@ With Convox, when an app works on your laptop, you can be confident it will also
     web   https://myapp-web.balancer-2137821817.us-east-1.rack.convox.io/
     ```
 
-5. Workflows define how an app automatically move from development to production with continuous integration.
+5. Workflows define how an app automatically moves from development to production with continuous integration.
 
     ```yaml
     workflows:
