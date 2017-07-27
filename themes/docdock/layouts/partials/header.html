@@ -37,6 +37,7 @@
         <section id="body">
         <div id="overlay"></div>
         <div class="padding highlightable">
+        {{ partial "banner.html" . }}
         {{if not .IsHome}}
           <div id="top-bar">
             {{ if and (or .IsPage .IsSection) .Site.Params.editURL }}
