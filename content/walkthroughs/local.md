@@ -7,6 +7,8 @@ Convox is a universal application framework. When you develop applications using
 
 This document will walk you through installing the Convox CLI and setting up a Docker-based development environment for an app.
 
+If you enjoy this development walk through, we encourage you to [sign up for Convox](https://ui.convox.com/auth/new) and read the [cloud deployment walk through](/walkthroughs/cloud/) to explore the production side of Convox.
+
 ## Setting up your development environment
 
 ### Install the CLI
@@ -413,4 +415,4 @@ Convox makes developing apps on your laptop easier than ever. With a good `convo
 
 The `build`, `env`, `diff`, `run` and `deploy` commands turn your laptop into a local application platform. It's now possible to configure and manage more than one development app, which makes working on microservices a breeze.
 
-Next, check out the [cloud walkthrough](/walkthroughs/cloud/) to see how the Convox makes managing your production environment just as easy through the same exact commands and concepts.
+Next, we encourage you to [sign up for Convox](https://ui.convox.com/auth/new) and read the [cloud deployment walk through](/walkthroughs/cloud/) to see how the Convox makes managing your production environment just as easy as development through the same exact commands and concepts.

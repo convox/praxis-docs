@@ -8,6 +8,8 @@ Convox is a universal application framework. When you deploy applications using 
 
 This document will walk you through creating a Convox account and setting up an AWS-based production environment for an app.
 
+If you are new to Convox, we encourage you to first [sign up for Convox](https://ui.convox.com/auth/new) and read the [local development walk through](/walkthroughs/local/) to explore how Convox turns your development computer into a application platform.
+
 ## Setting up your organization
 
 ### Sign up for Convox
