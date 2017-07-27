@@ -3,6 +3,7 @@ services:
     certificate: ${HOST}
     environment:
       - HOST=web.docs.convox
+      - HUGO_GOOGLEANALYTICS=
       - HUGO_TITLE='Convox 2.0 Documentation'
     port: 1313
     scale: 2
