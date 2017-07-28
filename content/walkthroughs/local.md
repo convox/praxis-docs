@@ -78,32 +78,6 @@ $ git clone https://github.com/convox/docs.git
 $ cd docs/
 ```
 
-### Quick start
-
-Spoiler alert: Convox apps need very little documentation to start. You can run the following commands to launch the app on your computer:
-
-```console
-$ cx apps create
-creating docs: OK
-
-$ cx start
-build   | building: /Users/matthew/code/convox/docs
-convox  | starting: convox.docs.service.web.1
-convox  | starting: convox.docs.service.web.2
-web     | Web Server is available at //web.docs.convox/ (bind address 0.0.0.0)
-web     | Web Server is available at //web.docs.convox/ (bind address 0.0.0.0)
-
-$ cx services
-NAME  ENDPOINT
-web   https://web.docs.convox
-```
-
-The app is now available on your at `https://web.docs.convox`.
-
-![It works!](/images/chrome-secure.png "It works!")
-
-Press "Ctrl+C" to stop the app and read on to learn how it all works...
-
 ### convox.yml
 
 The first thing to take note of in the project is the `convox.yml` file. This is where the app's description and configuration live.
@@ -294,11 +268,11 @@ Building without deploying is useful to stage changes and then deploy them as a 
 A new release is also created when you change the application's environment.
 
 ```console
-$ cx env set HUGO_TITLE="Convox 2.1 Documentation"
+$ cx env set HUGO_TITLE="Convox 3.0 Documentation"
 updating environment: OK
 
 $ cx env
-HUGO_TITLE=Convox 2.1 Documentation
+HUGO_TITLE=Convox 3.0 Documentation
 ```
 
 ### View releases

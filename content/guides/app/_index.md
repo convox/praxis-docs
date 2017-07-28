@@ -1,5 +1,6 @@
 +++
 title = "Preparing an App"
+alwaysopen = true
 weight = 2
 +++
 
@@ -37,7 +38,7 @@ It also declares the app operating system by referencing a Docker Image or a Doc
         test: make test
     ```
 
-    ```Dockerfile
+    ```Docker
     FROM ubuntu:16.04
 
     RUN apt-get update && apt-get install -y curl python-pip
