@@ -1,5 +1,6 @@
 +++
 title = "PostgreSQL"
+draft = true
 weight = 1
 +++
 

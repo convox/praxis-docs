@@ -1,5 +1,6 @@
 +++
 title = "Preparing an App"
+alwaysopen = true
 weight = 2
 +++
 

@@ -1,5 +1,6 @@
 +++
 title = "Setup"
+alwaysopen = true
 weight = 1
 +++
 

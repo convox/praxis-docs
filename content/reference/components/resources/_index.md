@@ -1,6 +1,7 @@
 +++
 title = "Resources"
 alwaysopen = false
+draft = true
 weight = 2
 +++
 

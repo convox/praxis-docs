@@ -1,5 +1,6 @@
 +++
 title = "Development Architecture"
+draft = true
 +++
 
 The Convox development environment runs a few services on your computer:
