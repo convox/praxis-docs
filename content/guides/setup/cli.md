@@ -73,6 +73,24 @@ Options:
 --version     print the version
 ```
 
-## Further reading:
+## Bash Helper
 
-* [CLI Reference](/cli/)
+You can configure your bash terminal to display what rack you are pointing to by adding the following to ~/.bash_profile:
+
+```
+export PS1="\h:\W \u (\$(cx switch))$ "
+```
+
+```console
+Laptop:docs noah (local)$ 
+$ cx apps
+NAME  STATUS
+docs  running
+
+$ cx switch convox/production
+Laptop:docs noah (convox/production)$ 
+
+$ cx apps
+NAME             STATUS
+docs-production  running
+```
