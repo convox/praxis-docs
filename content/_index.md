@@ -1,5 +1,5 @@
 +++
-title = "Convox 2.0 Documentation"
+title = "Welcome to Convox"
 class = "home"
 +++
 
@@ -7,9 +7,11 @@ class = "home"
 
 Welcome to Convox, an application platform that offers perfect parity between development, testing and production environments.
 
-Convox helps you build and deploy apps in minutes. It all starts with a `convox.yml`, a simple configuration file that describes everything about your app. This file is your blueprint for starting a development environment, running a test suite, and deploying to a reliable, scalable and cost-effective cloud architecture.
+Convox helps you build and deploy apps in minutes. It all starts with a `convox.yml`, a simple configuration file that describes everything about your app. This file is the blueprint for your app architecture.
 
-With Convox, when it works on your laptop you can be certain it will work in production. No code or config changes required.
+From this Convox can start a development environment, run a test suite, and configure a reliable, scalable and cost-effective cloud architecture.
+
+With Convox, when an app works on your laptop, you can be confident it will also work in production.
 
 {{% tabs %}}
 1. Configure
@@ -20,7 +22,7 @@ With Convox, when it works on your laptop you can be certain it will work in pro
 {{% /tabs %}}
 
 {{% tab-contents %}}
-1. The `convox.yml` file describes an app, SSL configuration, scale and test commands. The `Dockerfile` describes app dependencies and server commands. 
+1. The `convox.yml` file describes an app and its components like SSL certificate and process type and count. The `Dockerfile` describes app system dependencies.
 
     ```yaml
     services:
@@ -28,12 +30,13 @@ With Convox, when it works on your laptop you can be certain it will work in pro
         certificate: ${HOST}
         environment:
           - HOST=web.docs.convox
+          - HUGO_TITLE="Convox 2.0 Documentation"
         port: 1313
         scale: 2
         test: bin/test
     ```
 
-    ```Dockerfile
+    ```Docker
     FROM golang:1.8.3
 
     RUN apt-get update && apt-get install -y curl python-pip
@@ -46,9 +49,9 @@ With Convox, when it works on your laptop you can be certain it will work in pro
     CMD hugo server --baseURL=${HOST} -w
     ```
 
-2. The `cx start` command launches an app on your laptop behind a static SSL hostname.
+2. The `cx start` command launches an app on your laptop, with a load balancer and SSL just like production.
 
-    ```bash
+    ```console
     $ cx start
     build   | building: docs
     build   | Step 1/6 : FROM golang:1.8.3
@@ -75,7 +78,7 @@ With Convox, when it works on your laptop you can be certain it will work in pro
 
 3. The `cx test` command runs an app test suite on your laptop.
 
-    ```bash
+    ```console
     $ cx test
     build   | building: docs
     convox  | promoting RZUGPIDSHG
@@ -89,9 +92,9 @@ With Convox, when it works on your laptop you can be certain it will work in pro
     web     | ✅  /index.json returned expected content
     ```
 
-4. The `cx deploy` command launches an app in the cloud with a static SSL hostname, just like development.
+4. The `cx deploy` command launches an app in the cloud, where the VPC, load balancer and container schedule are a solved problem.
 
-    ```bash
+    ```console
     $ cx switch myorg/production
 
     $ cx deploy
@@ -110,26 +113,23 @@ With Convox, when it works on your laptop you can be certain it will work in pro
     web   https://myapp-web.balancer-2137821817.us-east-1.rack.convox.io/
     ```
 
-5. Workflows define and run continuous integration and continuous delivery for an app.
+5. Workflows define how an app automatically moves from development to production with continuous integration.
 
     ```yaml
     workflows:
+        change:
+          create:
+            - test: staging
+          update:
+            - test: staging
         merge:
           master:
             - test: staging
-            - deploy: staging/example-staging
-            - copy: production/example-production
+            - deploy: staging/docs-staging
+            - copy: production/docs-production
     ```
 
-    ```bash
-    $ git push github feature
-    $ git pull-request -m 'new feature'
-    $ git merge feature
-    ```
-
-    - ✅ convox/change — tests passed
-    - 🚀 nzoschke deployed to staging/example-staging
-    - 🚀 nzoschke started a deploy to production/example-production
+    ![GitHub Commit and Deploy Status](/images/github-status.png "GitHub Commit and Deploy Status")
 {{% /tab-contents %}}
 
 ## Dev / Prod Parity
@@ -139,3 +139,11 @@ The `convox.yml` file unlocks agility in building and deploying apps. By describ
 * Start everything your app needs on your laptop for development with a single command
 * Set up and tear down test environments with no additional configuration
 * Configure services to run your app in the cloud
+
+## Learn More
+
+If you're just getting started with Convox, you can follow a [walkthrough](/walkthroughs/) to develop and deploy an example app.
+
+If you're migrating an app, check out the [guides](/guides/) for setting up your apps and the platform.
+
+If you're writing a new app, check out the [app components reference](/reference/components/) to learn how a powerful and portable system architecture is only a few lines of code away.

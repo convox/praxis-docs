@@ -37,3 +37,9 @@ ol.tab-contents > li.active {
     display: inline-block;
     width: 100%;
 }
+
+.banner {
+    background: #FFF7DD;
+    font-size: 14px;
+    margin-bottom: 10px;
+}

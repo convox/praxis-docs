@@ -9,4 +9,4 @@ There is a **local** environment that runs apps on your development computer, an
 
 The `cx` CLI makes it easy to set up a new environment, switch to it, and manage apps.
 
-The following guides offer more detail about installing Convox on your development computer and on AWS.
+First, [set up `cx` the Convox CLI](/guides/setup/cli).
