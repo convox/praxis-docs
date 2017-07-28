@@ -149,15 +149,15 @@ Now you can deploy the app to your production Rack.
 First you'll need to create an app to use as a deployment target:
 
 ```console
-$ cx apps create docs-production
+$ cx apps create docs
 ```
 
 You should now see it in your apps list:
 
 ```console
 $ cx apps
-NAME             STATUS
-docs-production  running
+NAME  STATUS
+docs  running
 ```
 
 Now deploy:
