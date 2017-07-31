@@ -31,7 +31,7 @@ web     | Web Server is available at //web.docs.convox/ (bind address 0.0.0.0)
 
 Then the app is accessable at `https://web.docs.convox` and ready to work on.
 
-Check out the [local development walkthrough](https://docs-staging.convox.com/walkthroughs/local/) to learn how it all works.
+Check out the [local development walkthrough](https://docs.convox.com/walkthroughs/local/) to learn how it all works.
 
 ## Production
 
